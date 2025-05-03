@@ -1,0 +1,228 @@
+/* Component styles */
+.quiz-section {
+    display: none;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin: 2rem auto;
+    background-color: var(--input-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quiz-section.active {
+    display: block;
+}
+
+/* [All component styles from previous answer] */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%; /* Make form elements take full width */
+}
+
+#theme-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* --- Start Screen Specific --- */
+#start-screen h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#start-quiz-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+
+
+/* --- Quiz Screen Specific --- */
+#quiz-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 0.5rem; /* Spacing between items */
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--secondary-color); /* Muted color */
+}
+.dark-mode #quiz-header {
+    color: #adb5bd; /* Lighter muted color for dark mode */
+}
+
+
+#progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%; /* Start at 0% */
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+#question-container h3 {
+    margin-bottom: 1.5rem; /* More space below question */
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default (mobile) */
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.option-btn {
+    display: block; /* Make buttons block level */
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background-color: var(--input-bg); /* Use input background */
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.option-btn:hover:not([disabled]) {
+    background-color: #e9ecef; /* Light hover effect */
+    border-color: #adb5bd;
+}
+.dark-mode .option-btn:hover:not([disabled]) {
+     background-color: #495057; /* Dark hover effect */
+     border-color: #6c757d;
+}
+
+
+.option-btn.correct {
+    background-color: var(--correct-bg);
+    border-color: var(--success-color);
+    color: var(--success-color); /* Optional: change text color */
+    font-weight: bold;
+}
+
+.option-btn.incorrect {
+    background-color: var(--incorrect-bg);
+    border-color: var(--danger-color);
+    color: var(--danger-color); /* Optional: change text color */
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.explanation {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background-color: var(--explanation-bg);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: none; /* Hidden by default */
+    border-left: 4px solid var(--secondary-color);
+}
+.dark-mode .explanation {
+     border-left-color: #adb5bd;
+}
+
+
+#next-question-btn {
+    display: block; /* Ensure it takes space */
+    margin: 1.5rem auto 0; /* Center button */
+    min-width: 120px;
+}
+
+
+/* --- Results Screen Specific --- */
+#results-screen h2 {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+#results-screen p {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+#results-screen #highscore-message{
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+
+#leaderboard-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+#leaderboard-container h3{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#leaderboard-list {
+    list-style-position: inside; /* Numbers inside the list item */
+    padding-left: 0; /* Remove default padding */
+}
+#leaderboard-list li{
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+#leaderboard-list li:last-child{
+    border-bottom: none;
+}
+#leaderboard-list li span {
+    float: right; /* Align score to the right */
+    font-weight: bold;
+}
+
+
+#results-chart-container {
+    margin-top: 2rem;
+    max-width: 400px; /* Limit chart size */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.results-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Wrap buttons on small screens */
+}
+
+
+/* --- Responsive Design (Example Breakpoint) --- */
+@media (min-width: 600px) {
+    .options-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    }
+
+     #start-screen .setup-form {
+        max-width: 450px;
+        margin: 0 auto; /* Center the form */
+    }
+
+}

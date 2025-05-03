@@ -1,20 +1,27 @@
-// Data loading and randomization
-export const loadQuestions = async (category) => {
+const DATA_URL = '../src/data/quiz-data.json';
+
+let allQuestions = [];
+
+export async function fetchQuestions() {
+    if (allQuestions.length > 0) return allQuestions;
     try {
-      const response = await fetch('../data/quiz-data.json');
-      const data = await response.json();
-      return shuffleArray(data[category]).slice(0, 10); // 10 random questions
+        const response = await fetch(DATA_URL);
+        allQuestions = await response.json();
+        return allQuestions;
     } catch (error) {
-      console.error('Failed to load questions:', error);
-      return [];
+        console.error("Could not fetch quiz data:", error);
+        return [];
     }
-  };
-  
-  // Fisher-Yates shuffle algorithm
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
+}
+
+export function getUniqueCategories(questions) {
+    return [...new Set(questions.map(q => q.category))];
+}
+
+export function filterQuestions(questions, category, difficulty) {
+    return questions.filter(q => {
+        const categoryMatch = category === 'any' || q.category === category;
+        const difficultyMatch = difficulty === 'any' || q.difficulty === difficulty;
+        return categoryMatch && difficultyMatch;
+    });
+}

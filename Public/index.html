@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz+</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/animation.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body class="light-mode">
+    <header>
+        <h1>QuizWhiz+</h1>
+        <button id="theme-toggle-btn" aria-label="Toggle dark mode">🌙</button>
+        <img src="../assets/images/logo.svg" alt="Logo" width="150" height="40"> 
+    </header>
+
+    <main id="app-container">
+        
+            <!-- === Start Screen (Initially Visible) === -->
+            <section id="start-screen" class="quiz-section active">
+                <h2>Welcome!</h2>
+                <p>Test your knowledge.</p>
+    
+                <div class="setup-form">
+                     <div class="form-group">
+                        <label for="username-input">Enter your name:</label>
+                        <input type="text" id="username-input" placeholder="Quiz Taker">
+                     </div>
+                     <div class="form-group">
+                        <label for="category-select">Choose a Category:</label>
+                        <select id="category-select">
+                            <option value="any">Any Category</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label for="difficulty-select">Choose Difficulty:</label>
+                        <select id="difficulty-select">
+                            <option value="any">Any Difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                     </div>
+                     <button id="start-quiz-btn" class="btn btn-primary">Start Quiz</button>
+                </div>
+            </section>
+    
+            <!-- === Quiz Screen (Initially Hidden) === -->
+            <section id="quiz-screen" class="quiz-section">
+                <div id="quiz-header">
+                     <p>User: <span id="quiz-username"></span></p>
+                     <p>Score: <span id="quiz-score">0</span></p>
+                     <div id="timer-container">Time: <span id="time-left">--</span>s</div>
+                </div>
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="question-container">
+                    <h3 id="question-text">Question loading...</h3>
+                    <div id="options-container" class="options-grid">
+                        <!-- Options will be populated dynamically -->
+                    </div>
+                    <p id="explanation-text" class="explanation"></p> <!-- Hidden initially -->
+                </div>
+                <button id="next-question-btn" class="btn" style="display: none;">Next</button>
+            </section>
+    
+            <!-- === Results Screen (Initially Hidden) === -->
+            <section id="results-screen" class="quiz-section">
+                 <h2>Quiz Complete!</h2>
+                 <p>Well done, <span id="results-username"></span>!</p>
+                 <p>Your Final Score: <strong id="final-score">0</strong></p>
+                 <p>Accuracy: <strong id="accuracy">0%</strong></p>
+                 <p>Time Taken: <strong id="time-taken">0s</strong></p>
+                 <p id="highscore-message"></p> <!-- For "New High Score!" -->
+    
+                 <div id="leaderboard-container">
+                     <h3>Leaderboard (<span id="leaderboard-category"></span>)</h3>
+                     <ol id="leaderboard-list">
+                         <!-- Top scores will be listed here -->
+                     </ol>
+                 </div>
+    
+                 <div id="results-chart-container">
+                     <h3>Performance Summary</h3>
+                     <canvas id="results-chart"></canvas> <!-- Chart.js canvas -->
+                 </div>
+    
+                 <div class="results-actions">
+                     <button id="review-answers-btn" class="btn">Review Answers</button>
+                     <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+                </div>
+            </section>
+ 
+    </main>
+
+    <footer>
+        <p>© 2023 QuizWhiz+</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

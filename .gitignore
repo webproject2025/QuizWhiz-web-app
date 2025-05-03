@@ -1,0 +1,27 @@
+node_modules/
+.DS_Store
+dist/
+*.log
+
+favicon-data.json
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Editor directories
+.vscode/
+.idea/
+
+# Build files
+dist/
+public/review.html
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
