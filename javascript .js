@@ -82,11 +82,9 @@ function renderQuestions() {
                 </div>
             ` : ''}
         </div>
-    `).join('');  }
+    `).join('');
+}
 
-
-// 6. PDF Export Feature
-// Replace the dynamic import with:
 function initPDFExport() {
     const pdfBtn = document.createElement('button');
     pdfBtn.className = 'btn';
