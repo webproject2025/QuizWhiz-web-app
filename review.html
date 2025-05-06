@@ -1,0 +1,45 @@
+<!——-this is your html———>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz+ - Review</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container review-container">
+        <header class="review-header">
+            <h1>Quiz Results</h1>
+            <div class="chart-container">
+                <canvas id="scoreChart"></canvas>
+            </div>
+        </header>
+
+        <div class="results-summary">
+            <div class="score-display">
+                <h2>Your Score: <span id="final-score">0</span>%</h2>
+                <p><span id="correct-count">0</span> out of <span id="total-questions">0</span> correct</p>
+            </div>
+            
+            <div class="category-chart-container">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="questions-review" id="questions-review">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="action-buttons">
+            <button id="retry-quiz" class="btn">Retry Quiz</button>
+            <button id="new-quiz" class="btn">New Quiz</button>
+            <button id="view-leaderboard" class="btn">View Leaderboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
