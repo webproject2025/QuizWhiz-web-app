@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Login or Sign Up</title>
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <!-- Left Side - Form Container -->
+            <div class="auth-form-container">
+                <div class="logo">
+                    <h1>Quiz<span>Master</span></h1>
+                </div>
+                
+                <!-- Auth Tabs -->
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="auth-form active" id="login-form">
+                    <h2 class="form-title">Welcome Back!</h2>
+                    <p class="form-subtitle">Log in to continue your learning journey</p>
+                    
+                    <div class="social-auth">
+                        <button class="social-btn google-btn">
+                            <span class="icon">G</span>
+                            <span>Continue with Google</span>
+                        </button>
+                        <button class="social-btn facebook-btn">
+                            <span class="icon">f</span>
+                            <span>Continue with Facebook</span>
+                        </button>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or login with email</span>
+                    </div>
+                    
+                    <!-- ✅ Login Form Connected to Backend -->
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-password">👁️</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#forgot-password" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn">Log In</button>
+                    </form>
+                </div>
+                
+                <!-- Signup Form -->
+                <div class="auth-form" id="signup-form">
+                    <h2 class="form-title">Create Account</h2>
+                    <p class="form-subtitle">Join thousands of learners today</p>
+                    
+                    <div class="social-auth">
+                        <button class="social-btn google-btn">
+                            <span class="icon">G</span>
+                            <span>Sign up with Google</span>
+                        </button>
+                        <button class="social-btn facebook-btn">
+                            <span class="icon">f</span>
+                            <span>Sign up with Facebook</span>
+                        </button>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or sign up with email</span>
+                    </div>
+                    
+                    <!-- ✅ Signup Form Connected to Backend -->
+                    <form >
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-email">Email Address</label>
+                            <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+                                <button type="button" class="toggle-password">👁️</button>
+                            </div>
+                            <div class="password-strength">
+                                <span class="strength-label">Password strength:</span>
+                                <div class="strength-meter">
+                                    <div class="strength-segment"></div>
+                                    <div class="strength-segment"></div>
+                                    <div class="strength-segment"></div>
+                                    <div class="strength-segment"></div>
+                                </div>
+                                <span class="strength-text">Weak</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <div class="password-input">
+                                <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                                <button type="button" class="toggle-password">👁️</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="terms-check">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn">Create Account</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Side - Image and Info -->
+            <div class="auth-image-container">
+                <div class="auth-image-content">
+                    <h2>Test Your Knowledge</h2>
+                    <p>Join thousands of learners expanding their horizons with QuizMaster</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">📚</span>
+                            <span>Access thousands of quizzes</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏆</span>
+                            <span>Track your progress</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔍</span>
+                            <span>Create your own quizzes</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">👥</span>
+                            <span>Compete with friends</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auth-decoration">
+                    <div class="decoration-circle circle-1"></div>
+                    <div class="decoration-circle circle-2"></div>
+                    <div class="decoration-circle circle-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const authForms = document.querySelectorAll('.auth-form');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    authForms.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    const formId = this.getAttribute('data-tab') + '-form';
+                    document.getElementById(formId).classList.add('active');
+                });
+            });
+
+            // Toggle password
+            const toggleBtns = document.querySelectorAll('.toggle-password');
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+                });
+            });
+
+            // Password strength
+            const signupPassword = document.getElementById('signup-password');
+            const strengthMeter = document.querySelector('.strength-meter');
+            const strengthText = document.querySelector('.strength-text');
+            const strengthSegments = document.querySelectorAll('.strength-segment');
+            
+            signupPassword.addEventListener('input', function() {
+                const password = this.value;
+                let strength = 0;
+                if (password.length >= 8) strength += 1;
+                if (/[a-z]/.test(password)) strength += 1;
+                if (/[A-Z]/.test(password)) strength += 1;
+                if (/[0-9]/.test(password)) strength += 1;
+                if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
+                strengthSegments.forEach((segment, index) => {
+                    if (index < strength) segment.classList.add('active');
+                    else segment.classList.remove('active');
+                });
+
+                strengthText.textContent = ['Weak', 'Fair', 'Good', 'Strong', 'Strong'][Math.min(strength, 4)];
+                strengthMeter.className = 'strength-meter strength-' + strength;
+            });
+        });
+    </script>
+</body>
+</html>

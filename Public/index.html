@@ -3,106 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizWhiz+</title>
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/theme.css">
+    <title>QuizWhiz - Test Your Knowledge</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/animation.css">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
-<body class="light-mode">
+<body>
     <header>
-        <h1>QuizWhiz+</h1>
-        <button id="theme-toggle-btn" aria-label="Toggle dark mode">🌙</button>
-        <img src="../assets/images/logo.svg" alt="Logo" width="150" height="40"> 
+        <nav class="container">
+            <div class="logo">
+                <h1>Quiz<span>Whiz</span></h1>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="auth.html" class="btn btn-outline">Log In</a></li>
+                <li><a href="auth.html" class="btn btn-primary">Sign Up</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main id="app-container">
-        
-            <!-- === Start Screen (Initially Visible) === -->
-            <section id="start-screen" class="quiz-section active">
-                <h2>Welcome!</h2>
-                <p>Test your knowledge.</p>
-    
-                <div class="setup-form">
-                     <div class="form-group">
-                        <label for="username-input">Enter your name:</label>
-                        <input type="text" id="username-input" placeholder="Quiz Taker">
-                     </div>
-                     <div class="form-group">
-                        <label for="category-select">Choose a Category:</label>
-                        <select id="category-select">
-                            <option value="any">Any Category</option>
-                            <!-- Options will be populated dynamically -->
-                        </select>
-                     </div>
-                     <div class="form-group">
-                        <label for="difficulty-select">Choose Difficulty:</label>
-                        <select id="difficulty-select">
-                            <option value="any">Any Difficulty</option>
-                            <option value="Easy">Easy</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Hard">Hard</option>
-                        </select>
-                     </div>
-                     <button id="start-quiz-btn" class="btn btn-primary">Start Quiz</button>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Challenge Your Mind with <span>Quizwhiz</span></h1>
+                <p>Create, share, and take quizzes on any topic. Perfect for students, teachers, and curious minds.</p>
+                <div class="hero-buttons">
+                    <a href="auth.html" class="btn btn-primary">Get Started</a>
+                    <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
                 </div>
-            </section>
-    
-            <!-- === Quiz Screen (Initially Hidden) === -->
-            <section id="quiz-screen" class="quiz-section">
-                <div id="quiz-header">
-                     <p>User: <span id="quiz-username"></span></p>
-                     <p>Score: <span id="quiz-score">0</span></p>
-                     <div id="timer-container">Time: <span id="time-left">--</span>s</div>
+            </div>
+            <div class="hero-image">
+                <img src="/placeholder.svg?height=400&width=500" alt="Quiz App Interface">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <h2>10K+</h2>
+                <p>Active Users</p>
+            </div>
+            <div class="stat-item">
+                <h2>50K+</h2>
+                <p>Quizzes Created</p>
+            </div>
+            <div class="stat-item">
+                <h2>1M+</h2>
+                <p>Questions Answered</p>
+            </div>
+            <div class="stat-item">
+                <h2>100+</h2>
+                <p>Topics</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose <span>Quizwhiz</span>?</h2>
+                <p>Our platform offers everything you need to create and take quizzes</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Diverse Topics</h3>
+                    <p>Explore quizzes across hundreds of subjects from science to pop culture</p>
                 </div>
-                <div id="progress-bar-container">
-                    <div id="progress-bar"></div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Timed Challenges</h3>
+                    <p>Test your knowledge under pressure with customizable time limits</p>
                 </div>
-                <div id="question-container">
-                    <h3 id="question-text">Question loading...</h3>
-                    <div id="options-container" class="options-grid">
-                        <!-- Options will be populated dynamically -->
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detailed Analytics</h3>
+                    <p>Track your progress and identify areas for improvement</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Leaderboards</h3>
+                    <p>Compete with friends and see who ranks highest</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Custom Quizzes</h3>
+                    <p>Create your own quizzes with our easy-to-use quiz builder</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Share Anywhere</h3>
+                    <p>Share your quizzes on social media or embed them on your website</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It <span>Works</span></h2>
+                <p>Get started in just three simple steps</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create an Account</h3>
+                        <p>Sign up for free and set up your profile in seconds</p>
                     </div>
-                    <p id="explanation-text" class="explanation"></p> <!-- Hidden initially -->
                 </div>
-                <button id="next-question-btn" class="btn" style="display: none;">Next</button>
-            </section>
-    
-            <!-- === Results Screen (Initially Hidden) === -->
-            <section id="results-screen" class="quiz-section">
-                 <h2>Quiz Complete!</h2>
-                 <p>Well done, <span id="results-username"></span>!</p>
-                 <p>Your Final Score: <strong id="final-score">0</strong></p>
-                 <p>Accuracy: <strong id="accuracy">0%</strong></p>
-                 <p>Time Taken: <strong id="time-taken">0s</strong></p>
-                 <p id="highscore-message"></p> <!-- For "New High Score!" -->
-    
-                 <div id="leaderboard-container">
-                     <h3>Leaderboard (<span id="leaderboard-category"></span>)</h3>
-                     <ol id="leaderboard-list">
-                         <!-- Top scores will be listed here -->
-                     </ol>
-                 </div>
-    
-                 <div id="results-chart-container">
-                     <h3>Performance Summary</h3>
-                     <canvas id="results-chart"></canvas> <!-- Chart.js canvas -->
-                 </div>
-    
-                 <div class="results-actions">
-                     <button id="review-answers-btn" class="btn">Review Answers</button>
-                     <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Choose or Create a Quiz</h3>
+                        <p>Browse our library or create your own custom quiz</p>
+                    </div>
                 </div>
-            </section>
- 
-    </main>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Learning</h3>
+                        <p>Take quizzes, track your progress, and improve your knowledge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Test Your Knowledge?</h2>
+            <p>Join thousands of users who are already improving their skills with Quizwhiz</p>
+            <a href="auth.html" class="btn btn-primary">Get Started for Free</a>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our <span>Users</span> Say</h2>
+                <p>Hear from people who use QuizWhiz every day</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"QuizWhiz has transformed how I study for exams. The analytics feature helps me focus on areas where I need improvement."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/placeholder.svg?height=50&width=50" alt="Sarah J.">
+                        <div>
+                            <h4>Sarah J.</h4>
+                            <p>College Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"As a teacher, I use QuizWhiz to create engaging quizzes for my students. It's easy to use and my students love it!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/placeholder.svg?height=50&width=50" alt="Mark T.">
+                        <div>
+                            <h4>Mark T.</h4>
+                            <p>High School Teacher</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The variety of topics available is amazing. I've learned so much about subjects I never thought I'd be interested in."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/placeholder.svg?height=50&width=50" alt="Priya K.">
+                        <div>
+                            <h4>Priya K.</h4>
+                            <p>Lifelong Learner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked <span>Questions</span></h2>
+                <p>Find answers to common questions about QuizWhiz</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is QuizWhiz free to use?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, QuizWhiz offers a free plan with access to most features. We also offer premium plans with additional features for power users.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I create my own quizzes?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our intuitive quiz builder makes it easy to create custom quizzes on any topic. You can add multiple-choice questions, true/false questions, and more.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I share my quizzes with others?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once you've created a quiz, you can share it via a unique link, embed it on your website, or share it directly on social media platforms.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I use QuizWhiz for educational purposes?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Many teachers and educational institutions use QuizWhiz to create engaging learning experiences. We offer special features for educators, including class management tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2025 QuizWhiz+</p>
+
+
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2>Quiz<span>Whiz</span></h2>
+                    </div>
+                    <p>Challenge your mind and expand your knowledge with our interactive quiz platform.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="LinkedIn">LI</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Subscribe</h3>
+                    <p>Stay updated with our latest features and quizzes</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QuizWhiz. All rights reserved.</p>
+            </div>
+        </div>
+
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="/src/js/main.js"></script>
+    <script>
+        // Simple JavaScript for FAQ toggle and mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    const toggle = question.querySelector('.faq-toggle');
+                    toggle.textContent = item.classList.contains('active') ? '-' : '+';
+                });
+            });
+
+            // Mobile Menu Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
