@@ -617,3 +617,21 @@
         grid-template-columns: 1fr;
     }
   }
+  /*---additional error styles-- */
+.error-message {
+  color: #dc3545;
+  background: #f8d7da;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 1.2rem;
+}
