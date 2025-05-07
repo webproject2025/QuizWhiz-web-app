@@ -1,0 +1,323 @@
+
+        /* Explore Page Styles */
+        .explore-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-color);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-color);
+        }
+
+        .category-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .category-chip {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: white;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--box-shadow);
+        }
+
+        .category-chip:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .category-chip.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-image {
+            height: 160px;
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quiz-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--secondary-color);
+        }
+
+        .quiz-badge.popular {
+            background-color: rgba(255, 152, 0, 0.9);
+            color: white;
+        }
+
+        .quiz-badge.new {
+            background-color: rgba(76, 175, 80, 0.9);
+            color: white;
+        }
+
+        .quiz-badge.featured {
+            background-color: rgba(14, 165, 233, 0.9);
+            color: white;
+        }
+
+        .quiz-content {
+            padding: 20px;
+        }
+
+        .quiz-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-color);
+        }
+
+        .quiz-description {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clam: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }        
+
+        .quiz-creator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .creator-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .creator-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .creator-name {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+        }
+
+        .quiz-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .quiz-actions .btn {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .featured-section {
+            margin-bottom: 40px;
+        }
+
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .featured-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .featured-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            margin-top: 5px;
+        }
+
+        .featured-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 5px;
+            margin: 0 -5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--light-gray);
+        }
+
+        .featured-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .featured-carousel::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 4px;
+        }
+
+        .featured-carousel::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .featured-item {
+            min-width: 300px;
+            flex: 0 0 auto;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .explore-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-chips {
+                overflow-x: auto;
+                padding-bottom: 10px;
+                white-space: nowrap;
+                display: block;
+            }
+            
+            .category-chip {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
