@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizMaster - Login or Sign Up</title>
-    <link rel="stylesheet" href="styles/auth.css">
+    <title>Quizwhiz+ - Login or Sign Up</title>
+    <link rel="stylesheet" href="../Public/styles/auth.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="auth-wrapper">
             <div class="auth-form-container">
                 <div class="logo">
-                    <h1>Quiz<span>Master</span></h1>
+                    <h1>Quiz<span>whiz+</span></h1>
                 </div>
 
                 <div class="auth-tabs">
@@ -38,8 +38,9 @@
                     <div class="divider">
                         <span>or login with email</span>
                     </div>
-
-                    <form>
+                    
+                    <!-- ✅ Login Form Connected to Backend -->
+                    <form action="../backend/auth.php" method="POST">
                         <div class="form-group">
                             <label for="login-email">Email Address</label>
                             <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
@@ -83,8 +84,9 @@
                     <div class="divider">
                         <span>or sign up with email</span>
                     </div>
-
-                    <form >
+                    
+                    <!-- ✅ Signup Form Connected to Backend -->
+                    <form action="../backend/" method="POST">
                         <div class="form-group">
                             <label for="signup-name">Full Name</label>
                             <input type="text" id="signup-name" name="name" placeholder="Enter your full name" required>
