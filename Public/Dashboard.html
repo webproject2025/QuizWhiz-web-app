@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <h2>Quiz<span>Whiz+</span></h2>
@@ -73,9 +72,7 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Header -->
             <header class="dashboard-header">
                 <div class="menu-toggle" id="menu-toggle">
                     <span></span>
@@ -102,7 +99,6 @@
                 </div>
             </header>
 
-            <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="welcome-banner">
                     <div class="welcome-text">
@@ -114,7 +110,6 @@
                     </div>
                 </div>
 
-                <!-- Stats Overview -->
                 <section class="stats-overview">
                     <div class="stat-card">
                         <div class="stat-icon" style="background-color: rgba(108, 99, 255, 0.2);">📊</div>
@@ -150,7 +145,6 @@
                     </div>
                 </section>
 
-                <!-- Progress Section -->
                 <section class="progress-section">
                     <div class="section-header">
                         <h2>Your Learning Progress</h2>
@@ -196,9 +190,7 @@
                     </div>
                 </section>
 
-                <!-- Two Column Layout -->
                 <div class="two-column-layout">
-                    <!-- Recent Quizzes -->
                     <section class="recent-quizzes">
                         <div class="section-header">
                             <h2>Recent Quizzes</h2>
@@ -252,7 +244,6 @@
                         </div>
                     </section>
 
-                    <!-- Recommended Quizzes -->
                     <section class="recommended-quizzes">
                         <div class="section-header">
                             <h2>Recommended For You</h2>
@@ -311,7 +302,6 @@
                     </section>
                 </div>
 
-                <!-- Achievement Section -->
                 <section class="achievements-section">
                     <div class="section-header">
                         <h2>Recent Achievements</h2>
@@ -353,7 +343,6 @@
                     </div>
                 </section>
 
-                <!-- Friends Activity -->
                 <section class="friends-activity">
                     <div class="section-header">
                         <h2>Friends Activity</h2>
@@ -392,10 +381,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            const authData = localStorage.getItem('quizmasterAuth');
+            if (!authData) {
+                window.location.href = 'auth.html';
+                return;
+            }
+
+            // Update dashboard with user data
+            const user = JSON.parse(authData);
+            document.querySelector('.user-profile h4').textContent = user.name;
+            document.querySelector('.welcome-banner h1').textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
+
             // Mobile menu toggle
             const menuToggle = document.getElementById('menu-toggle');
             const sidebar = document.querySelector('.sidebar');
-            
+
             menuToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
                 menuToggle.classList.toggle('active');
@@ -410,6 +411,13 @@
                     }
                 }
             });
+        });
+
+        // Add logout functionality
+        document.querySelector('.logout-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('quizmasterAuth');
+            window.location.href = 'auth.html';
         });
     </script>
 </body>

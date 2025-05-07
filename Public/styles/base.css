@@ -31,7 +31,7 @@ header, footer {
     text-align: center;
 }
 
-/* [Rest of base styles from previous answer] */
+
 header {
     display: flex;
     justify-content: space-between;

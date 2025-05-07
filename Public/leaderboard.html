@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz+ Leaderboard</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/leaderboard.css"
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Quiz<span>Whiz+</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="../pages/dashboard.html">
+                            <span class="icon">📊</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#my-quizzes">
+                            <span class="icon">📝</span>
+                            <span>My Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#explore">
+                            <span class="icon">🔍</span>
+                            <span>Explore</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#create">
+                            <span class="icon">➕</span>
+                            <span>Create Quiz</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../pages/leaderboard.html">
+                            <span class="icon">🏆</span>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#analytics">
+                            <span class="icon">📈</span>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/settings.html">
+                            <span class="icon">⚙️</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#help">
+                    <span class="icon">❓</span>
+                    <span>Help Center</span>
+                </a>
+                <a href="#logout" class="logout-btn">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for users...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notification">
+                        <span class="icon">🔔</span>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="/placeholder.svg?height=40&width=40" alt="User Profile">
+                        <div class="user-info">
+                            <h4>Alex Johnson</h4>
+                            <p>Premium Member</p>
+                        </div>
+                        <span class="dropdown-icon">▼</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h1>Global Leaderboard</h1>
+                        <p>See how you rank against other quiz enthusiasts from around the world.</p>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="#share" class="btn btn-outline">Share Your Score</a>
+                        <a href="#challenge" class="btn btn-primary">Challenge Friends</a>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Filters -->
+                <section class="leaderboard-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="math">Mathematics</option>
+                            <option value="literature">Literature</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="time-filter">Time Period:</label>
+                        <select id="time-filter" class="filter-select">
+                            <option value="all-time">All Time</option>
+                            <option value="this-month">This Month</option>
+                            <option value="this-week">This Week</option>
+                            <option value="today">Today</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="difficulty-filter">Difficulty:</label>
+                        <select id="difficulty-filter" class="filter-select">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="apply-filters" class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+                    </div>
+                </section>
+
+                <!-- Leaderboard Table -->
+                <section class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <div>Rank</div>
+                        <div class="avatar-col">Avatar</div>
+                        <div>User</div>
+                        <div>Score</div>
+                        <div class="category-col">Category</div>
+                        <div class="difficulty-col">Difficulty</div>
+                    </div>
+                    <div class="leaderboard-body">
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge rank-1">1</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">👑</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>QuizMaster2023</span>
+                                </div>
+                            </div>
+                            <div>9,850</div>
+                            <div class="category-col">Science</div>
+                            <div class="difficulty-col">Hard</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge rank-2">2</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🥈</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>BrainiacQueen</span>
+                                </div>
+                            </div>
+                            <div>8,720</div>
+                            <div class="category-col">History</div>
+                            <div class="difficulty-col">Hard</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge rank-3">3</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🥉</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>KnowledgeKing</span>
+                                </div>
+                            </div>
+                            <div>7,645</div>
+                            <div class="category-col">Mathematics</div>
+                            <div class="difficulty-col">Medium</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">4</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🧠</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>QuizWizard</span>
+                                </div>
+                            </div>
+                            <div>6,980</div>
+                            <div class="category-col">Geography</div>
+                            <div class="difficulty-col">Medium</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">5</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">📚</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>TriviaChamp</span>
+                                </div>
+                            </div>
+                            <div>6,540</div>
+                            <div class="category-col">Literature</div>
+                            <div class="difficulty-col">Hard</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">6</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🔍</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>CuriousMind</span>
+                                </div>
+                            </div>
+                            <div>6,125</div>
+                            <div class="category-col">Science</div>
+                            <div class="difficulty-col">Easy</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">7</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">💻</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>CodeNinja</span>
+                                </div>
+                            </div>
+                            <div>5,890</div>
+                            <div class="category-col">Computer Science</div>
+                            <div class="difficulty-col">Medium</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">8</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🌍</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>GeoExplorer</span>
+                                </div>
+                            </div>
+                            <div>5,740</div>
+                            <div class="category-col">Geography</div>
+                            <div class="difficulty-col">Hard</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">9</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">🧩</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>PuzzleMaster</span>
+                                </div>
+                            </div>
+                            <div>5,510</div>
+                            <div class="category-col">Logic</div>
+                            <div class="difficulty-col">Hard</div>
+                        </div>
+
+                        <div class="leaderboard-row">
+                            <div>
+                                <div class="rank-badge">10</div>
+                            </div>
+                            <div class="avatar-col">
+                                <div class="user-avatar">📖</div>
+                            </div>
+                            <div>
+                                <div class="user-info">
+                                    <span>BookWorm</span>
+                                </div>
+                            </div>
+                            <div>5,320</div>
+                            <div class="category-col">Literature</div>
+                            <div class="difficulty-col">Medium</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>&laquo;</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">&raquo;</button>
+                </div>
+
+                <!-- Your Rank Section -->
+                <section class="your-rank-section">
+                    <h2>Your Position</h2>
+                    <div class="leaderboard-row your-rank-row">
+                        <div>
+                            <div class="rank-badge">42</div>
+                        </div>
+                        <div class="avatar-col">
+                            <div class="user-avatar">😎</div>
+                        </div>
+                        <div>
+                            <div class="user-info">
+                                <span>Alex Johnson (You)</span>
+                            </div>
+                        </div>
+                        <div>3,250</div>
+                        <div class="category-col">Science</div>
+                        <div class="difficulty-col">Medium</div>
+                    </div>
+                </section>
+
+                <!-- Top Categories Section -->
+                <section class="progress-section">
+                    <div class="section-header">
+                        <h2>Top Categories</h2>
+                        <a href="#view-all" class="view-all">View All</a>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>Science</h3>
+                                <p>Most competitive category</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 95%;">
+                                    <span class="progress-text">95%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>History</h3>
+                                <p>Fastest growing category</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 75%;">
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>Mathematics</h3>
+                                <p>Highest average scores</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 60%;">
+                                    <span class="progress-text">60%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992) {
+                    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                }
+            });
+
+            // Pagination
+            const paginationBtns = document.querySelectorAll('.pagination-btn');
+            paginationBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.disabled) return;
+                    
+                    // Remove active class from all buttons
+                    paginationBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // In a real app, this would fetch the corresponding page
+                    console.log(`Navigating to page: ${this.textContent}`);
+                });
+            });
+
+            // Apply filters
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            applyFiltersBtn.addEventListener('click', function() {
+                const category = document.getElementById('category-filter').value;
+                const time = document.getElementById('time-filter').value;
+                const difficulty = document.getElementById('difficulty-filter').value;
+                
+                // In a real app, this would fetch filtered data
+                console.log(`Filtering by: Category=${category}, Time=${time}, Difficulty=${difficulty}`);
+                alert(`Filters applied: Category=${category}, Time=${time}, Difficulty=${difficulty}`);
+            });
+        });
+    </script>
+</body>
+</html>
