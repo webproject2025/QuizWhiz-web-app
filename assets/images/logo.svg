@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <style>
+    .logo-text {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #2c3e50;
+    }
+    .logo-icon {
+      fill: #4A90E2;
+    }
+  </style>
+  
+  <!-- Icon Part -->
+  <path class="logo-icon" d="M10 10h30v30H10z"/>
+  <path class="logo-icon" d="M15 15h20v20H15z" fill="#fff"/>
+  <path d="M20 25l5-5 5 5-5 5z"/>
+  
+  <!-- Text Part -->
+  <text class="logo-text" x="50" y="35">QuizWhiz+</text>
+</svg>

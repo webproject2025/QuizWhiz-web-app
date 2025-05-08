@@ -1,0 +1,227 @@
+[
+  {
+      "id": "sci001",
+      "category": "Science",
+      "difficulty": "Easy",
+      "question": "What planet is known as the Red Planet?",
+      "options": ["Earth", "Mars", "Jupiter", "Venus"],
+      "correctAnswer": "Mars",
+      "explanation": "Mars appears red due to iron oxide on its surface."
+  },
+  {
+      "id": "html001",
+      "category": "HTML",
+      "difficulty": "Easy",
+      "question": "What does HTML stand for?",
+      "options": [
+          "Hyper Text Markup Language",
+          "High Tech Modern Language",
+          "Hyperlink and Text Markup Language",
+          "Home Tool Markup Language"
+      ],
+      "correctAnswer": "Hyper Text Markup Language",
+      "explanation": "HTML is the standard markup language for web pages."
+  },
+  
+   
+    {
+        "id": "math001",
+        "category": "Mathematics",
+        "difficulty": "Medium",
+        "question": "What is the value of π (pi) rounded to two decimal places?",
+        "options": ["3.14", "3.16", "3.18", "3.12"],
+        "correctAnswer": "3.14",
+        "explanation": "π is approximately 3.14159, which rounds to 3.14 for two decimal places."
+    },
+    {
+        "id": "css001",
+        "category": "CSS",
+        "difficulty": "Medium",
+        "question": "Which CSS property controls text spacing?",
+        "options": ["letter-spacing", "text-align", "font-weight", "line-height"],
+        "correctAnswer": "letter-spacing",
+        "explanation": "The letter-spacing property controls the spacing between characters."
+    },
+    {
+        "id": "logic002",
+        "category": "Logic",
+        "difficulty": "Hard",
+        "question": "If A implies B, and B implies C, does A imply C?",
+        "options": ["Always", "Never", "Sometimes", "Only if B is true"],
+        "correctAnswer": "Always",
+        "explanation": "This is an example of hypothetical syllogism in propositional logic."
+    },
+    {
+        "id": "js001",
+        "category": "JavaScript",
+        "difficulty": "Hard",
+        "question": "What does 'NaN' stand for?",
+        "options": ["Not a Number", "Number and Number", "No available Number", "Numerical annotation"],
+        "correctAnswer": "Not a Number",
+        "explanation": "NaN is a special value representing 'Not a Number' in JavaScript."
+    },
+    {
+        "id": "gen001",
+        "category": "General",
+        "difficulty": "Easy",
+        "question": "How many continents are there?",
+        "options": ["5", "6", "7", "8"],
+        "correctAnswer": "7",
+        "explanation": "The seven continents are: Asia, Africa, North America, South America, Antarctica, Europe, and Australia."
+    },
+    {
+        "id": "test001",
+        "category": "Testing",
+        "difficulty": "Medium",
+        "question": "This is a test question with <strong>HTML</strong>?",
+        "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "correctAnswer": "Option 2",
+        "explanation": "This tests HTML rendering in questions (should display as text, not rendered HTML)."
+    },
+    {
+        "id": "edge001",
+        "category": "Edge Cases",
+        "difficulty": "Hard",
+        "question": "What is 0 divided by 0?",
+        "options": ["0", "1", "Undefined", "Infinity"],
+        "correctAnswer": "Undefined",
+        "explanation": "0/0 is considered undefined in mathematics as it doesn't produce a determinable value."
+    },
+    {
+        "id": "long001",
+        "category": "Long Text",
+        "difficulty": "Easy",
+        "question": "This is a question with a very long text to test UI layout and responsiveness. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?",
+        "options": [
+            "Short option 1",
+            "Medium length option 2",
+            "Very long option 3 that needs to wrap correctly in the UI",
+            "Option 4"
+        ],
+        "correctAnswer": "Very long option 3 that needs to wrap correctly in the UI",
+        "explanation": "This tests the UI's handling of long text in both questions and options."
+    },
+   
+    
+        {
+            "id": "logic003",
+            "category": "Logic",
+            "difficulty": "Medium",
+            "question": "If all robots are machines, and some machines can think, can we conclude some robots can think?",
+            "options": ["Yes", "No", "Maybe", "Not enough information"],
+            "correctAnswer": "No",
+            "explanation": "The conclusion doesn't follow because 'some machines' might refer to non-robot machines."
+        },
+        {
+            "id": "logic004",
+            "category": "Logic",
+            "difficulty": "Hard",
+            "question": "Which is logically equivalent to 'If it rains, the ground gets wet'?",
+            "options": [
+                "If the ground is wet, it rained",
+                "If it doesn't rain, the ground isn't wet",
+                "The ground gets wet only if it rains",
+                "If the ground isn't wet, it didn't rain"
+            ],
+            "correctAnswer": "If the ground isn't wet, it didn't rain",
+            "explanation": "This is the contrapositive and is logically equivalent to the original statement."
+        },
+        {
+            "id": "logic005",
+            "category": "Logic",
+            "difficulty": "Easy",
+            "question": "Which pattern comes next: ○, △, □, ○, △, □, ___",
+            "options": ["○", "△", "□", "◊"],
+            "correctAnswer": "○",
+            "explanation": "The pattern repeats every three elements: ○, △, □."
+        },
+        {
+            "id": "logic006",
+            "category": "Logic",
+            "difficulty": "Medium",
+            "question": "You meet two people: one always lies, one always tells truth. They say: 'I am the liar' and 'I am the truth-teller'. Who is who?",
+            "options": [
+                "First is liar, second is truth-teller",
+                "Both are lying",
+                "First is truth-teller, second is liar",
+                "Cannot determine"
+            ],
+            "correctAnswer": "Cannot determine",
+            "explanation": "The liar would lie about being the liar, and the truth-teller would truthfully deny being the liar. Both would say 'I am the truth-teller'."
+        },
+        {
+            "id": "logic007",
+            "category": "Logic",
+            "difficulty": "Hard",
+            "question": "Given: A ∧ ¬B → C and ¬C. What can we conclude?",
+            "options": [
+                "¬A ∨ B",
+                "A ∧ B",
+                "C → A",
+                "¬A ∧ ¬B"
+            ],
+            "correctAnswer": "¬A ∨ B",
+            "explanation": "From A ∧ ¬B → C and ¬C, we can conclude ¬(A ∧ ¬B) which is equivalent to ¬A ∨ B."
+        },
+        {
+            "id": "logic008",
+            "category": "Logic",
+            "difficulty": "Medium",
+            "question": "Which is a valid conclusion? Premises: 1) All dogs bark 2) Fido is a dog",
+            "options": [
+                "Fido barks",
+                "All barkers are dogs",
+                "Some dogs don't bark",
+                "Cats don't bark"
+            ],
+            "correctAnswer": "Fido barks",
+            "explanation": "Valid syllogism: All dogs bark (major premise), Fido is a dog (minor premise), therefore Fido barks."
+        },
+        {
+            "id": "logic009",
+            "category": "Logic",
+            "difficulty": "Easy",
+            "question": "If A = true and B = false, what is ¬(A ∨ B)?",
+            "options": ["True", "False", "Undefined", "Neither"],
+            "correctAnswer": "False",
+            "explanation": "A ∨ B = true ∨ false = true. ¬true = false."
+        },
+        {
+            "id": "logic010",
+            "category": "Logic",
+            "difficulty": "Hard",
+            "question": "Which logical fallacy is this: 'You can't trust his climate science; he owns a gas-guzzling car!'",
+            "options": [
+                "Ad hominem",
+                "Straw man",
+                "False dilemma",
+                "Appeal to authority"
+            ],
+            "correctAnswer": "Ad hominem",
+            "explanation": "Attacking the person rather than their argument."
+        },
+        {
+            "id": "logic011",
+            "category": "Logic",
+            "difficulty": "Medium",
+            "question": "Solve for X: If X then Y. Y is true. Therefore:",
+            "options": [
+                "X must be true",
+                "X might be true",
+                "X must be false",
+                "No conclusion"
+            ],
+            "correctAnswer": "No conclusion",
+            "explanation": "This is the fallacy of affirming the consequent. Y could be true for other reasons."
+        },
+        {
+            "id": "logic012",
+            "category": "Logic",
+            "difficulty": "Easy",
+            "question": "Which number continues: 2, 3, 5, 8, 12, ___",
+            "options": ["15", "17", "18", "20"],
+            "correctAnswer": "17",
+            "explanation": "Pattern: +1, +2, +3, +4, +5 (differences between numbers)"
+        }
+    
+]

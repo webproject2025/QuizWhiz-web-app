@@ -1,0 +1,24 @@
+{
+  "name": "quizwhiz-web-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server --baseDir=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdataa/QuizWhiz-web-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abdataa/QuizWhiz-web-app/issues"
+  },
+  "homepage": "https://github.com/Abdataa/QuizWhiz-web-app#readme",
+  "description": "",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "live-server": "^1.2.2"
+  }
+}
