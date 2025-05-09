@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizWhiz++ - My Quizzes</title>
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <link rel="stylesheet" href="../styles/my-quizzes.css">
+    <link rel="stylesheet" href="./styles/dashboard.css">
+    <link rel="stylesheet" href="./styles/my-quizzes.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 </head>
 <body>
@@ -18,31 +18,31 @@
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="../pages/dashboard.html">
+                        <a href="dashboard.html">
                             <span class="icon">📊</span>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../pages/my-quizzes.html">
+                        <a href="my-quizzes.html">
                             <span class="icon">📝</span>
                             <span>My Quizzes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/explore.html">
+                        <a href="explore.html">
                             <span class="icon">🔍</span>
                             <span>Explore</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/create-quiz.html">
+                        <a href="create-quiz.html">
                             <span class="icon">➕</span>
                             <span>Create Quiz</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/leaderboard.html">
+                        <a href="leaderboard.html">
                             <span class="icon">🏆</span>
                             <span>Leaderboard</span>
                         </a>
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/settings.html">
+                        <a href="settings.html">
                             <span class="icon">⚙️</span>
                             <span>Settings</span>
                         </a>
@@ -110,7 +110,7 @@
                         <p>Manage your created quizzes and track your quiz-taking progress.</p>
                     </div>
                     <div class="quick-actions">
-                        <a href="../pages/create-quiz.html" class="btn btn-primary">Create New Quiz</a>
+                        <a href="create-quiz.html" class="btn btn-primary">Create New Quiz</a>
                     </div>
                 </div>
 
@@ -482,7 +482,7 @@
                         <div class="empty-icon">⭐</div>
                         <h3 class="empty-title">No Favorite Quizzes Yet</h3>
                         <p class="empty-description">You haven't added any quizzes to your favorites yet. Browse the Explore section to discover and favorite quizzes that interest you.</p>
-                        <a href="../pages/explore.html" class="btn btn-primary">Explore Quizzes</a>
+                        <a href="explore.html" class="btn btn-primary">Explore Quizzes</a>
                     </div>
                 </div>
             </div>
@@ -504,8 +504,6 @@
             document.addEventListener('click', function(event) {
                 if (window.innerWidth <= 992) {
                     if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-                        sidebar.classList.remove('active');
-                        menuToggle.classList.remove('active');  {
                         sidebar.classList.remove('active');
                         menuToggle.classList.remove('active');
                     }
