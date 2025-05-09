@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if ($stmt->execute()) {
                     $success = "Signup successful! You can now log in.";
                     // Optionally set the login tab active after successful signup
-                    $activeTab = "login";
+                    $activeTab = "dashboard";
                 } else {
                     throw new Exception("Signup failed. Please try again later.");
                 }
