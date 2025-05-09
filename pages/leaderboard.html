@@ -92,21 +92,21 @@
                 <!-- Your Rank Section -->
                 <section class="your-rank-section">
                     <h2>Your Position</h2>
-                    <div class="leaderboard-row your-rank-row">
+                    <div class="leaderboard-row your-rank-row" id="user-position">
                         <div>
-                            <div class="rank-badge">42</div>
+                            <div class="rank-badge">Loading...</div>
                         </div>
                         <div class="avatar-col">
                             <div class="user-avatar">😎</div>
                         </div>
                         <div>
                             <div class="user-info">
-                                <span>Alex Johnson (You)</span>
+                                <span id="user-position-email">Loading...</span>
                             </div>
                         </div>
-                        <div>3,250</div>
-                        <div class="category-col">Science</div>
-                        <div class="difficulty-col">Medium</div>
+                        <div id="user-position-score">Loading...</div>
+                        <div class="category-col" id="user-position-category">Loading...</div>
+                        <div class="difficulty-col" id="user-position-difficulty">Loading...</div>
                     </div>
                 </section>
 
@@ -167,44 +167,128 @@
                 if (callback) callback();
             });
         }
+
         async function fetchHeaderUser() {
             try {
                 const response = await fetch('/QuizWhiz-web-app/api/get_current_user.php', { credentials: 'include' });
                 const data = await response.json();
                 if (response.ok && data.user && data.user.email) {
-                    document.getElementById('user-email').textContent = data.user.email;
+                    // Update header email
+                    const headerEmail = document.querySelector('.user-profile .user-info h4');
+                    if (headerEmail) {
+                        headerEmail.textContent = data.user.email;
+                    }
+                    // Update position email
+                    document.getElementById('user-position-email').textContent = data.user.email + ' (You)';
+                    // After getting user data, fetch their position
+                    fetchUserPosition(data.user.email);
                 } else {
-                    document.getElementById('user-email').textContent = 'Not logged in';
+                    // Update header email
+                    const headerEmail = document.querySelector('.user-profile .user-info h4');
+                    if (headerEmail) {
+                        headerEmail.textContent = 'Not logged in';
+                    }
+                    // Update position email
+                    document.getElementById('user-position-email').textContent = 'Not logged in';
+                    document.getElementById('user-position').style.display = 'none';
                 }
             } catch (e) {
-                document.getElementById('user-email').textContent = 'Not logged in';
+                console.error('Error fetching user data:', e);
+                // Update header email
+                const headerEmail = document.querySelector('.user-profile .user-info h4');
+                if (headerEmail) {
+                    headerEmail.textContent = 'Not logged in';
+                }
+                // Update position email
+                document.getElementById('user-position-email').textContent = 'Not logged in';
+                document.getElementById('user-position').style.display = 'none';
             }
         }
+
+        async function fetchUserPosition(userEmail) {
+            try {
+                console.log('Fetching position for user:', userEmail);
+                const response = await fetch('/QuizWhiz-web-app/api/get_leaderboard.php', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                console.log('Leaderboard data for user position:', data);
+                
+                if (response.ok && data.success) {
+                    const userIndex = data.leaderboard.findIndex(user => user.email === userEmail);
+                    console.log('User index in leaderboard:', userIndex);
+                    
+                    if (userIndex !== -1) {
+                        const user = data.leaderboard[userIndex];
+                        console.log('User data:', user);
+                        document.querySelector('#user-position .rank-badge').textContent = userIndex + 1;
+                        document.getElementById('user-position-score').textContent = user.total_score || 0;
+                        // Don't update email here as it's already set in fetchHeaderUser
+                        // Get user's most common category and difficulty
+                        fetchUserStats(userEmail);
+                    } else {
+                        // If user is not in top 20, show their position as "Not Ranked"
+                        document.querySelector('#user-position .rank-badge').textContent = 'NR';
+                        document.getElementById('user-position-score').textContent = '0';
+                        // Don't update email here as it's already set in fetchHeaderUser
+                        document.getElementById('user-position-category').textContent = 'N/A';
+                        document.getElementById('user-position-difficulty').textContent = 'N/A';
+                    }
+                }
+            } catch (err) {
+                console.error('Error fetching user position:', err);
+                document.getElementById('user-position').style.display = 'none';
+            }
+        }
+
+        async function fetchUserStats(userEmail) {
+            try {
+                const response = await fetch('/QuizWhiz-web-app/api/get_user_stats.php', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    document.getElementById('user-position-category').textContent = data.stats.most_common_category || 'N/A';
+                    document.getElementById('user-position-difficulty').textContent = data.stats.most_common_difficulty || 'N/A';
+                }
+            } catch (err) {
+                console.error('Error fetching user stats:', err);
+                document.getElementById('user-position-category').textContent = 'N/A';
+                document.getElementById('user-position-difficulty').textContent = 'N/A';
+            }
+        }
+
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('sidebar', '/QuizWhiz-web-app/components/sidebar.html');
+            loadComponent('sidebar', '/QuizWhiz-web-app/components/sidebar.html', function() {
+                // Wait for sidebar to load before adding event listeners
+                const menuToggle = document.getElementById('menu-toggle');
+                const sidebar = document.querySelector('.sidebar');
+                
+                if (menuToggle && sidebar) {
+                    menuToggle.addEventListener('click', function() {
+                        sidebar.classList.toggle('active');
+                        menuToggle.classList.toggle('active');
+                    });
+
+                    // Close sidebar when clicking outside on mobile
+                    document.addEventListener('click', function(event) {
+                        if (window.innerWidth <= 992) {
+                            if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                                sidebar.classList.remove('active');
+                                menuToggle.classList.remove('active');
+                            }
+                        }
+                    });
+                }
+            });
+            
             loadComponent('dashboard-header', '/QuizWhiz-web-app/components/header.html', fetchHeaderUser);
+            fetchLeaderboard(); // Make sure we fetch the leaderboard data
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
-
-            // Close sidebar when clicking outside on mobile
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 992) {
-                    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-                        sidebar.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                    }
-                }
-            });
-
             // Pagination
             const paginationBtns = document.querySelectorAll('.pagination-btn');
             paginationBtns.forEach(btn => {
@@ -242,12 +326,14 @@
                     credentials: 'include'
                 });
                 const data = await response.json();
+                console.log('Leaderboard data:', data); // Debug log
                 if (response.ok && data.success) {
                     displayLeaderboard(data.leaderboard);
                 } else {
                     document.getElementById('leaderboard-body').innerHTML = '<div style="padding:20px;">Failed to load leaderboard.</div>';
                 }
             } catch (err) {
+                console.error('Error loading leaderboard:', err);
                 document.getElementById('leaderboard-body').innerHTML = '<div style="padding:20px;">Error loading leaderboard.</div>';
             }
         }
@@ -273,8 +359,6 @@
                 body.appendChild(row);
             });
         }
-
-        document.addEventListener('DOMContentLoaded', fetchLeaderboard);
     </script>
 </body>
 </html>

@@ -18,18 +18,19 @@ try {
               GROUP BY u.user_id
               ORDER BY total_score DESC, quizzes_taken DESC, best_score DESC
               LIMIT 20";
-    $result = $conn->query($query);
-    $leaderboard = [];
-    while ($row = $result->fetch_assoc()) {
-        $leaderboard[] = [
-            'user_id' => $row['user_id'],
-            'email' => $row['email'],
-            'quizzes_taken' => (int)$row['quizzes_taken'],
-            'attempts' => (int)$row['attempts'],
-            'total_score' => (float)$row['total_score'],
-            'best_score' => (float)$row['best_score']
-        ];
+    
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $leaderboard = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Convert numeric values to proper types
+    foreach ($leaderboard as &$row) {
+        $row['quizzes_taken'] = (int)$row['quizzes_taken'];
+        $row['attempts'] = (int)$row['attempts'];
+        $row['total_score'] = (float)$row['total_score'];
+        $row['best_score'] = (float)$row['best_score'];
     }
+    
     echo json_encode(['success' => true, 'leaderboard' => $leaderboard]);
 } catch (Exception $e) {
     http_response_code(500);
