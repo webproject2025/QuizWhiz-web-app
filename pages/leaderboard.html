@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz+ Leaderboard</title>
+    <link rel="stylesheet" href="../Public/styles/dashboard.css">
+    <link rel="stylesheet" href="../Public/styles/leaderboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar"></div>
+        <main class="main-content">
+            <div id="dashboard-header"></div>
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h1>Global Leaderboard</h1>
+                        <p>See how you rank against other quiz enthusiasts from around the world.</p>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="#share" class="btn btn-outline">Share Your Score</a>
+                        <a href="#challenge" class="btn btn-primary">Challenge Friends</a>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Filters -->
+                <section class="leaderboard-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="math">Mathematics</option>
+                            <option value="literature">Literature</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="time-filter">Time Period:</label>
+                        <select id="time-filter" class="filter-select">
+                            <option value="all-time">All Time</option>
+                            <option value="this-month">This Month</option>
+                            <option value="this-week">This Week</option>
+                            <option value="today">Today</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="difficulty-filter">Difficulty:</label>
+                        <select id="difficulty-filter" class="filter-select">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="apply-filters" class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+                    </div>
+                </section>
+
+                <!-- Leaderboard Table -->
+                <section class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <div>Rank</div>
+                        <div class="avatar-col">Avatar</div>
+                        <div>User</div>
+                        <div>Score</div>
+                        <div>Quizzes Taken</div>
+                        <div>Best Score</div>
+                    </div>
+                    <div class="leaderboard-body" id="leaderboard-body">
+                        <!-- Dynamic leaderboard rows will be inserted here -->
+                    </div>
+                </section>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>&laquo;</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn">&raquo;</button>
+                </div>
+
+                <!-- Your Rank Section -->
+                <section class="your-rank-section">
+                    <h2>Your Position</h2>
+                    <div class="leaderboard-row your-rank-row">
+                        <div>
+                            <div class="rank-badge">42</div>
+                        </div>
+                        <div class="avatar-col">
+                            <div class="user-avatar">😎</div>
+                        </div>
+                        <div>
+                            <div class="user-info">
+                                <span>Alex Johnson (You)</span>
+                            </div>
+                        </div>
+                        <div>3,250</div>
+                        <div class="category-col">Science</div>
+                        <div class="difficulty-col">Medium</div>
+                    </div>
+                </section>
+
+                <!-- Top Categories Section -->
+                <section class="progress-section">
+                    <div class="section-header">
+                        <h2>Top Categories</h2>
+                        <a href="#view-all" class="view-all">View All</a>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>Science</h3>
+                                <p>Most competitive category</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 95%;">
+                                    <span class="progress-text">95%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>History</h3>
+                                <p>Fastest growing category</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 75%;">
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-info">
+                                <h3>Mathematics</h3>
+                                <p>Highest average scores</p>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 60%;">
+                                    <span class="progress-text">60%</span>
+                                </div>
+                            </div>
+                            <a href="#view-leaderboard" class="btn btn-sm">View Leaderboard</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load shared sidebar and header, then fetch user
+        function loadComponent(id, url, callback) {
+            fetch(url).then(r => r.text()).then(html => {
+                document.getElementById(id).innerHTML = html;
+                if (callback) callback();
+            });
+        }
+        async function fetchHeaderUser() {
+            try {
+                const response = await fetch('/QuizWhiz-web-app/api/get_current_user.php', { credentials: 'include' });
+                const data = await response.json();
+                if (response.ok && data.user && data.user.email) {
+                    document.getElementById('user-email').textContent = data.user.email;
+                } else {
+                    document.getElementById('user-email').textContent = 'Not logged in';
+                }
+            } catch (e) {
+                document.getElementById('user-email').textContent = 'Not logged in';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar', '/QuizWhiz-web-app/components/sidebar.html');
+            loadComponent('dashboard-header', '/QuizWhiz-web-app/components/header.html', fetchHeaderUser);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992) {
+                    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                }
+            });
+
+            // Pagination
+            const paginationBtns = document.querySelectorAll('.pagination-btn');
+            paginationBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.disabled) return;
+                    
+                    // Remove active class from all buttons
+                    paginationBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // In a real app, this would fetch the corresponding page
+                    console.log(`Navigating to page: ${this.textContent}`);
+                });
+            });
+
+            // Apply filters
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            applyFiltersBtn.addEventListener('click', function() {
+                const category = document.getElementById('category-filter').value;
+                const time = document.getElementById('time-filter').value;
+                const difficulty = document.getElementById('difficulty-filter').value;
+                
+                // In a real app, this would fetch filtered data
+                console.log(`Filtering by: Category=${category}, Time=${time}, Difficulty=${difficulty}`);
+                alert(`Filters applied: Category=${category}, Time=${time}, Difficulty=${difficulty}`);
+            });
+        });
+
+        // Fetch and display leaderboard
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch('/QuizWhiz-web-app/api/get_leaderboard.php', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                if (response.ok && data.success) {
+                    displayLeaderboard(data.leaderboard);
+                } else {
+                    document.getElementById('leaderboard-body').innerHTML = '<div style="padding:20px;">Failed to load leaderboard.</div>';
+                }
+            } catch (err) {
+                document.getElementById('leaderboard-body').innerHTML = '<div style="padding:20px;">Error loading leaderboard.</div>';
+            }
+        }
+
+        function displayLeaderboard(leaderboard) {
+            const body = document.getElementById('leaderboard-body');
+            body.innerHTML = '';
+            if (!leaderboard.length) {
+                body.innerHTML = '<div style="padding:20px;">No leaderboard data available.</div>';
+                return;
+            }
+            leaderboard.forEach((user, idx) => {
+                const row = document.createElement('div');
+                row.className = 'leaderboard-row';
+                row.innerHTML = `
+                    <div><div class="rank-badge rank-${idx+1}">${idx+1}</div></div>
+                    <div class="avatar-col"><div class="user-avatar">${idx === 0 ? '👑' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '👤'}</div></div>
+                    <div><div class="user-info"><span>${user.email}</span></div></div>
+                    <div>${user.total_score || 0}</div>
+                    <div>${user.quizzes_taken || 0}</div>
+                    <div>${user.best_score || 0}</div>
+                `;
+                body.appendChild(row);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchLeaderboard);
+    </script>
+</body>
+</html>
