@@ -1,0 +1,98 @@
+<aside class="sidebar">
+    <div class="logo">
+        <h2>Quiz<span>Whiz+</span></h2>
+    </div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="Dashboard.html">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="my-quizzes.html">
+                    <span class="icon">📝</span>
+                    <span>My Quizzes</span>
+                </a>
+            </li>
+            <li>
+                <a href="explore.html">
+                    <span class="icon">🔍</span>
+                    <span>Explore</span>
+                </a>
+            </li>
+            <li>
+                <a href="create-quiz.html">
+                    <span class="icon">➕</span>
+                    <span>Create Quiz</span>
+                </a>
+            </li>
+            <li>
+                <a href="leaderboard.html">
+                    <span class="icon">🏆</span>
+                    <span>Leaderboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#analytics">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="#help">
+            <span class="icon">❓</span>
+            <span>Help Center</span>
+        </a>
+        <a href="#" id="logout-btn" class="logout-btn">
+            <span class="icon">🚪</span>
+            <span>Logout</span>
+        </a>
+    </div>
+</aside>
+
+<script>
+    // Function to initialize logout functionality
+    function initializeLogout() {
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                
+                try {
+                    const response = await fetch('/QuizWhiz-web-app/api/logout.php', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        // Redirect to login page
+                        window.location.href = '/QuizWhiz-web-app/pages/auth.html';
+                    } else {
+                        alert('Failed to logout: ' + (data.error || 'Unknown error'));
+                    }
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                    alert('Failed to logout. Please try again.');
+                }
+            });
+        }
+    }
+
+    // Wait for the component to be fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeLogout);
+    } else {
+        initializeLogout();
+    }
+</script> 
