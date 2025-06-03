@@ -1,34 +1,12 @@
-# QuizWhiz+ - Group Project
-# QuizWhiz+
+# QuizWhiz+ – Web-Based Quiz App
 
-A feature-rich quiz web application built with HTML, CSS, and Vanilla JavaScript.
+**QuizWhiz+** is an interactive quiz web application built using **HTML**, **CSS**, **JavaScript**, and **PHP**, with **MySQL** as the backend database. It supports multiple quiz categories, live scoring, answer review, a leaderboard, theming options, and a fully responsive design.
 
-## Features
-- Multiple question categories
-- Difficulty levels
-- Score tracking
-- Leaderboard system
-- Answer review
-- Dark/Light theme
-- Responsive design
+> 🔧 Built as part of a Web Development course project. No external libraries or frameworks were used.
 
-## Installation
-1. Clone the repository
-2. Open `public/index.html` in a browser
+---
 
-
-
-############################################################################
-NOtice -every members should contribute to the project 
-Below is guide for you on how to contribute to the project
-
-
-QuizWhiz+ – Web-Based Quiz App
-
-QuizWhiz+ is an interactive quiz web application built with HTML, CSS, and JavaScript. It features multiple categories, real-time scoring, review system, theming, and more. Developed collaboratively as part of a Web Development Course Project.
-
-
-🚀 Key Features
+## 🚀 Features
 
 - 🧠 Quiz Categories (Science, HTML, Logic, etc.)
 - 🎚️ Difficulty Levels (Easy, Medium, Hard)
@@ -40,147 +18,74 @@ QuizWhiz+ is an interactive quiz web application built with HTML, CSS, and JavaS
 
 ---
 
-📁 Project Structure
+## 🛠️ Installation & Setup
 
+To run the project locally, follow these steps:
 
-QuizWhiz-web-app/
- ├── public/ # Static files (HTML, CSS, Images)
- │ ├── index.html
- │ ├── styles/
- │ └── assets/
- ├── src/ # JavaScript code and data
- │ ├── js/ # Quiz logic, UI handlers
- │ └── data/ # Questions (JSON)
- ├── docs/ # Project documentation
- └── .github/ # Contribution templates and workflows
-
-
-
-💻 Getting Started
-
-Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18+)
-- [Git](https://git-scm.com/)
-- Internet browser
-
-Setup Instructions
+### 1. Clone the Repository
 
 ```bash
- 1. Clone the repository
-git clone https://github.com/Abdataa/QuizWhiz-web-app.git
-cd QuizWhiz-web-app
+git clone https://github.com/your-username/QuizWhiz-web-app.git
 
- 2. Install Live Server globally
-npm install -g live-server
+Copy or move the folder into your htdocs directory if you're using XAMPP:
+C:\xampp\htdocs\QuizWhiz-web-app
 
- 3. Run the app
-cd public
-live-server
+###2. Start XAMPP
+Launch XAMPP Control Panel
 
-Then visit http://127.0.0.1:8080 in your browser.
- 
+Start Apache and MySQL
 
+###3. Import the Database
+Open your browser and go to phpMyAdmin.
 
-🤝 Contributions Welcome!
+Create a new database named: quiz
 
+Import the SQL file:
 
+Go to the Import tab
 
+Choose the file: database/quiz_tables.sql
 
- ✅ `CONTRIBUTING.md`
+Click Go
 
+###4. Open the App
+Navigate to the app in your browser:
+http://localhost/QuizWhiz-web-app/public/pages/index.html
 
-✨ Contribution Guide – QuizWhiz+ Web App
+🔐 Test Credentials
+Use the following test accounts to log in:
 
-Thank you for contributing to QuizWhiz+! This guide helps you contribute effectively and consistently.
+Email	Password
+john@example.com	password
+jane@example.com	password
 
+📁 Project Structure
 
-It is must to contribute to the project —-----that is What the course instructor said
-🔧 Workflow Overview
+QuizWhiz-web-app/
+│
+├── database/
+│   ├── quiz_tables.sql          # Database schema
+│   └── setup_database.php       # Optional setup script
+│
+├── public/
+│   ├── pages/                   # HTML pages
+│   ├── js/                      # JavaScript files
+│   └── styles/                  # CSS styles
+│
+├── api/                         # PHP APIs (e.g., get_quizzes.php)
+├── README.md                    # This file
+└── .gitignore
 
-1.Fork the Repository
+❓ FAQ
+Q: I don't know where to start!
+A: Visit the Project Board and pick a task from the "To Do" column.
 
-   If you haven't already:
-   ```bash`````
-  https://github.com/Abdataa/QuizWhiz-web-app
-
-2.Create Your Branch
-
- Each member should work in their own branch:
-
-      git checkout -b yourname-feature
-
-3.Make Your Changes
-
- Write code, add assets, or edit styles. Test your changes using live-server.
-
-
-4.Commit Changes
-
- Follow clear commit naming:
-
-git commit -m "feat: add category selection dropdown"
-git commit -m "fix: bug in scoring logic"
-
-5.Push and Open Pull Request
-
-         1.git push origin yourname-feature
-##Go to GitHub > Open Pull Request > Select base: main, compare: yourname-feature.
-
-
-
-
-
-
-
-🧩 Branch Naming Convention
-Type                   Example
-
-Feature --------------abdi-auth-system
-
-Fix-------------------member1-score-bugfix
-
-UI/UX-----------------member2-ui-tweaks
-
-Docs------------------member3-readme-update
-
-
-
-🐛 Reporting Issues
-If you find a bug, go to Issues > New Issue, and describe:
-What happened?
-
-
-What should have happened?
-
-
-Steps to reproduce
-
-
-Screenshots (if applicable)
-
-
-
-✅ Pull Request Requirements
-Use a clear title (e.g., "Add user authentication screen")
-
-
-Link related issues (if any)
-
-
-Add before/after screenshots if UI changed
-
-
-Test your code before submitting
-
-
-
-🧠 FAQ
-Q: I don’t know where to start!
- A: Visit the Project Board and pick a task from the "To Do" column.
 Q: Who do I ask for help?
- A: Ask @Abdataa  via GitHub, or check the issue discussions.
-B:telegram @abdataa123
+A: Ask @Abdataa via GitHub, or check the issue discussions.
+📱 Telegram: @abdataa123
+
+📘 License
+This project is intended for educational use only.
+No commercial or production deployment is permitted.
 
 Thanks for being part of the QuizWhiz+ team! 🎉
-
