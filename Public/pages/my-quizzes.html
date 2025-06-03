@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz++ - My Quizzes</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/my-quizzes.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar"></div>
+        <main class="main-content">
+            <div id="dashboard-header"></div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h1>My Quizzes</h1>
+                        <p>Manage your created quizzes and track your quiz-taking progress.</p>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="create-quiz.html" class="btn btn-primary">Create New Quiz</a>
+                    </div>
+                </div>
+
+                <!-- Quiz Filters -->
+                <section class="quiz-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="math">Mathematics</option>
+                            <option value="literature">Literature</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="difficulty-filter">Difficulty:</label>
+                        <select id="difficulty-filter" class="filter-select">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-filter">Sort By:</label>
+                        <select id="sort-filter" class="filter-select">
+                            <option value="recent">Most Recent</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="highest">Highest Score</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="quiz-search">Search:</label>
+                        <input type="text" id="quiz-search" class="search-input" placeholder="Search by title or description">
+                    </div>
+                </section>
+
+                <!-- Quiz Tabs -->
+                <div class="quiz-tabs">
+                    <div class="quiz-tab active" data-tab="all-quizzes">All Quizzes</div>
+                    <div class="quiz-tab" data-tab="created">Created by Me</div>
+                    <div class="quiz-tab" data-tab="completed">Completed</div>
+                    <div class="quiz-tab" data-tab="in-progress">In Progress</div>
+                    <div class="quiz-tab" data-tab="favorites">Favorites</div>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="all-quizzes" class="tab-content active">
+                    <div class="quiz-grid"></div>
+                    <div class="pagination"></div>
+                </div>
+
+                <div id="created" class="tab-content">
+                    <div class="quiz-grid"></div>
+                    <div class="pagination"></div>
+                </div>
+
+                <div id="completed" class="tab-content">
+                    <div class="quiz-grid"></div>
+                    <div class="pagination"></div>
+                </div>
+
+                <div id="in-progress" class="tab-content">
+                    <div class="quiz-grid"></div>
+                    <div class="pagination"></div>
+                </div>
+
+                <div id="favorites" class="tab-content">
+                    <div class="quiz-grid"></div>
+                    <div class="pagination"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../Public/js/my-quizzes.js"></script>
+    <script>
+        // Load shared sidebar and header, then fetch user
+        function loadComponent(id, url, callback) {
+            fetch(url).then(r => r.text()).then(html => {
+                document.getElementById(id).innerHTML = html;
+                if (callback) callback();
+            });
+        }
+        async function fetchHeaderUser() {
+            try {
+                const response = await fetch('/QuizWhiz-web-app/api/get_current_user.php', { credentials: 'include' });
+                const data = await response.json();
+                if (response.ok && data.user && data.user.email) {
+                    document.getElementById('user-email').textContent = data.user.email;
+                } else {
+                    document.getElementById('user-email').textContent = 'Not logged in';
+                }
+            } catch (e) {
+                console.error('Error fetching user data:', e);
+                document.getElementById('user-email').textContent = 'Not logged in';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar', '/QuizWhiz-web-app/components/sidebar.html', function() {
+                // Wait for sidebar to load before adding event listeners
+                const menuToggle = document.getElementById('menu-toggle');
+                const sidebar = document.querySelector('.sidebar');
+                
+                if (menuToggle && sidebar) {
+                    menuToggle.addEventListener('click', function() {
+                        sidebar.classList.toggle('active');
+                        menuToggle.classList.toggle('active');
+                    });
+
+                    // Close sidebar when clicking outside on mobile
+                    document.addEventListener('click', function(event) {
+                        if (window.innerWidth <= 992) {
+                            if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                                sidebar.classList.remove('active');
+                                menuToggle.classList.remove('active');
+                            }
+                        }
+                    });
+                }
+            });
+            
+            loadComponent('dashboard-header', '/QuizWhiz-web-app/components/header.html', fetchHeaderUser);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz+ - Quiz Results</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        .results-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            color: white;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                #28a745 0% var(--score),
+                #e9ecef var(--score) 100%
+            );
+        }
+
+        .score-circle::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .score-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar"></div>
+        <main class="main-content">
+            <div id="dashboard-header"></div>
+            <div class="results-container">
+                <div class="results-header">
+                    <h1 id="quiz-title">Quiz Results</h1>
+                    <div class="score-circle" id="score-circle">
+                        <div class="score-text" id="score-text">0%</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="correct-answers">0</div>
+                        <div class="stat-label">Correct Answers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-questions">0</div>
+                        <div class="stat-label">Total Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="earned-points">0</div>
+                        <div class="stat-label">Points Earned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-points">0</div>
+                        <div class="stat-label">Total Points</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='explore.html'">
+                        Find More Quizzes
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.location.href='Dashboard.html'">
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Get quiz ID and score from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const quizId = urlParams.get('id');
+        const score = parseFloat(urlParams.get('score')) || 0;
+
+        // Update score circle
+        const scoreCircle = document.getElementById('score-circle');
+        scoreCircle.style.setProperty('--score', `${score}%`);
+        document.getElementById('score-text').textContent = `${Math.round(score)}%`;
+
+        // Fetch detailed results
+        async function fetchResults() {
+            try {
+                const response = await fetch(`../../api/get_quiz_results.php?quiz_id=${quizId}`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    // Update quiz title
+                    document.getElementById('quiz-title').textContent = data.quiz.title;
+                    
+                    // Update stats
+                    document.getElementById('correct-answers').textContent = data.correct_answers;
+                    document.getElementById('total-questions').textContent = data.total_questions;
+                    document.getElementById('earned-points').textContent = data.earned_points;
+                    document.getElementById('total-points').textContent = data.total_points;
+                }
+            } catch (error) {
+                console.error('Error fetching results:', error);
+            }
+        }
+
+        // Load shared sidebar and header
+        function loadComponent(id, url, callback) {
+            fetch(url).then(r => r.text()).then(html => {
+                document.getElementById(id).innerHTML = html;
+                if (callback) callback();
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('sidebar', '../../components/sidebar.html');
+            loadComponent('dashboard-header', '../../components/header.html');
+            fetchResults();
+        });
+    </script>
+</body>
+</html> 

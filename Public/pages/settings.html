@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz++ Settings</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/settings.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar"></div>
+        <main class="main-content">
+            <div id="dashboard-header"></div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h1>Account Settings</h1>
+                        <p>Customize your QuizWhiz++ experience and manage your account preferences.</p>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="#help" class="btn btn-outline">Get Help</a>
+                        <a href="#save-all" class="btn btn-primary">Save All Changes</a>
+                    </div>
+                </div>
+
+                <!-- Settings Container -->
+                <div class="settings-container">
+                    <!-- Settings Sidebar -->
+                    <div class="settings-sidebar">
+                        <ul class="settings-nav">
+                            <li><a href="#profile" class="active" data-tab="profile">Profile</a></li>
+                            <li><a href="#appearance" data-tab="appearance">Appearance</a></li>
+                            <li><a href="#quiz-preferences" data-tab="quiz-preferences">Quiz Preferences</a></li>
+                            <li><a href="#notifications" data-tab="notifications">Notifications</a></li>
+                            <li><a href="#account" data-tab="account">Account</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="settings-content">
+                        <!-- Profile Settings -->
+                        <div id="profile" class="settings-tab active">
+                            <h2>Profile Settings</h2>
+                            <form id="profile-form">
+                                <div class="profile-header">
+                                    <div class="profile-avatar">
+                                        <div class="avatar-preview">😎</div>
+                                        <button type="button" class="btn btn-outline">Change Avatar</button>
+                                    </div>
+                                    <div class="profile-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-label">Quizzes Completed</span>
+                                            <span class="stat-value">127</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Average Score</span>
+                                            <span class="stat-value">78%</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Best Category</span>
+                                            <span class="stat-value">Science</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="display-name">Display Name</label>
+                                    <input type="text" id="display-name" name="display-name" value="Alex Johnson" class="form-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" value="alex.johnson@example.com" class="form-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bio">Bio</label>
+                                    <textarea id="bio" name="bio" class="form-input" rows="3">I love taking quizzes and learning new things every day! Science enthusiast and trivia lover.</textarea>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Appearance Settings -->
+                        <div id="appearance" class="settings-tab">
+                            <h2>Appearance Settings</h2>
+                            <form id="appearance-form">
+                                <div class="form-group">
+                                    <label>Theme</label>
+                                    <div class="theme-options">
+                                        <div class="theme-option">
+                                            <input type="radio" id="theme-light" name="theme" value="light" checked>
+                                            <label for="theme-light" class="theme-label">
+                                                <div class="theme-preview light-preview"></div>
+                                                <span>Light</span>
+                                            </label>
+                                        </div>
+                                        <div class="theme-option">
+                                            <input type="radio" id="theme-dark" name="theme" value="dark">
+                                            <label for="theme-dark" class="theme-label">
+                                                <div class="theme-preview dark-preview"></div>
+                                                <span>Dark</span>
+                                            </label>
+                                        </div>
+                                        <div class="theme-option">
+                                            <input type="radio" id="theme-system" name="theme" value="system">
+                                            <label for="theme-system" class="theme-label">
+                                                <div class="theme-preview system-preview"></div>
+                                                <span>System</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Color Accent</label>
+                                    <div class="color-options">
+                                        <div class="color-option">
+                                            <input type="radio" id="color-blue" name="color-accent" value="blue" checked>
+                                            <label for="color-blue" class="color-label" style="--color: #0EA5E9;"></label>
+                                        </div>
+                                        <div class="color-option">
+                                            <input type="radio" id="color-purple" name="color-accent" value="purple">
+                                            <label for="color-purple" class="color-label" style="--color: #8b5cf6;"></label>
+                                        </div>
+                                        <div class="color-option">
+                                            <input type="radio" id="color-green" name="color-accent" value="green">
+                                            <label for="color-green" class="color-label" style="--color: #10b981;"></label>
+                                        </div>
+                                        <div class="color-option">
+                                            <input type="radio" id="color-red" name="color-accent" value="red">
+                                            <label for="color-red" class="color-label" style="--color: #ef4444;"></label>
+                                        </div>
+                                        <div class="color-option">
+                                            <input type="radio" id="color-orange" name="color-accent" value="orange">
+                                            <label for="color-orange" class="color-label" style="--color: #f97316;"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="font-size">Font Size</label>
+                                    <div class="range-container">
+                                        <input type="range" id="font-size" name="font-size" min="12" max="20" value="16" class="range-input">
+                                        <span class="range-value">16px</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="button" class="btn btn-outline">Reset to Default</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Quiz Preferences -->
+                        <div id="quiz-preferences" class="settings-tab">
+                            <h2>Quiz Preferences</h2>
+                            <form id="quiz-preferences-form">
+                                <div class="form-group">
+                                    <label for="default-category">Default Category</label>
+                                    <select id="default-category" name="default-category" class="form-select">
+                                        <option value="any">Any Category</option>
+                                        <option value="science" selected>Science</option>
+                                        <option value="history">History</option>
+                                        <option value="math">Mathematics</option>
+                                        <option value="literature">Literature</option>
+                                        <option value="geography">Geography</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="default-difficulty">Default Difficulty</label>
+                                    <select id="default-difficulty" name="default-difficulty" class="form-select">
+                                        <option value="easy">Easy</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="hard">Hard</option>
+                                        <option value="any">Any Difficulty</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="questions-per-quiz">Questions Per Quiz</label>
+                                    <select id="questions-per-quiz" name="questions-per-quiz" class="form-select">
+                                        <option value="5">5 Questions</option>
+                                        <option value="10" selected>10 Questions</option>
+                                        <option value="15">15 Questions</option>
+                                        <option value="20">20 Questions</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Quiz Options</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="show-timer" name="show-timer" checked>
+                                            <label for="show-timer">Show Timer</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="show-progress" name="show-progress" checked>
+                                            <label for="show-progress">Show Progress</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="immediate-feedback" name="immediate-feedback" checked>
+                                            <label for="immediate-feedback">Immediate Feedback</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="allow-skipping" name="allow-skipping">
+                                            <label for="allow-skipping">Allow Skipping Questions</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div id="notifications" class="settings-tab">
+                            <h2>Notification Settings</h2>
+                            <form id="notifications-form">
+                                <div class="form-group">
+                                    <label>Email Notifications</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="email-quiz-results" name="email-quiz-results" checked>
+                                            <label for="email-quiz-results">Quiz Results</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="email-leaderboard" name="email-leaderboard" checked>
+                                            <label for="email-leaderboard">Leaderboard Updates</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="email-new-quizzes" name="email-new-quizzes" checked>
+                                            <label for="email-new-quizzes">New Quizzes</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="email-newsletter" name="email-newsletter">
+                                            <label for="email-newsletter">Newsletter</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Browser Notifications</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="browser-quiz-results" name="browser-quiz-results" checked>
+                                            <label for="browser-quiz-results">Quiz Results</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="browser-leaderboard" name="browser-leaderboard">
+                                            <label for="browser-leaderboard">Leaderboard Updates</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="browser-new-quizzes" name="browser-new-quizzes" checked>
+                                            <label for="browser-new-quizzes">New Quizzes</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Account Settings -->
+                        <div id="account" class="settings-tab">
+                            <h2>Account Settings</h2>
+                            <form id="account-form">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" name="current-password" class="form-input" placeholder="Enter your current password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" name="new-password" class="form-input" placeholder="Enter new password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="Confirm new password">
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                </div>
+
+                                <div class="form-divider"></div>
+
+                                <div class="form-group">
+                                    <label>Data & Privacy</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="save-quiz-history" name="save-quiz-history" checked>
+                                            <label for="save-quiz-history">Save Quiz History</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="share-activity" name="share-activity" checked>
+                                            <label for="share-activity">Share Activity on Leaderboard</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="personalized-content" name="personalized-content" checked>
+                                            <label for="personalized-content">Personalized Content</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="analytics-cookies" name="analytics-cookies">
+                                            <label for="analytics-cookies">Allow Analytics Cookies</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="danger-zone">
+                                    <h3>Danger Zone</h3>
+                                    <p>These actions are irreversible. Please proceed with caution.</p>
+                                    <div class="danger-actions">
+                                        <button type="button" class="btn danger-btn">Delete Quiz History</button>
+                                        <button type="button" class="btn danger-btn">Delete Account</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load shared sidebar and header, then fetch user
+        function loadComponent(id, url, callback) {
+            fetch(url).then(r => r.text()).then(html => {
+                document.getElementById(id).innerHTML = html;
+                if (callback) callback();
+            });
+        }
+        async function fetchHeaderUser() {
+            try {
+                const response = await fetch('/QuizWhiz-web-app/api/get_current_user.php', { credentials: 'include' });
+                const data = await response.json();
+                if (response.ok && data.user && data.user.email) {
+                    document.getElementById('user-email').textContent = data.user.email;
+                } else {
+                    document.getElementById('user-email').textContent = 'Not logged in';
+                }
+            } catch (e) {
+                document.getElementById('user-email').textContent = 'Not logged in';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar', '/QuizWhiz-web-app/components/sidebar.html');
+            loadComponent('dashboard-header', '/QuizWhiz-web-app/components/header.html', fetchHeaderUser);
+
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992) {
+                    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                }
+            });
+
+            // Settings tab navigation
+            const tabLinks = document.querySelectorAll('.settings-nav a');
+            const tabContents = document.querySelectorAll('.settings-tab');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and tabs
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked link and corresponding tab
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Font size range input
+            const fontSizeRange = document.getElementById('font-size');
+            const fontSizeValue = document.querySelector('.range-value');
+            
+            if (fontSizeRange) {
+                fontSizeRange.addEventListener('input', function() {
+                    fontSizeValue.textContent = `${this.value}px`;
+                });
+            }
+
+            // Form submissions
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Settings saved successfully!');
+                });
+            });
+
+            // Danger zone buttons
+            const dangerBtns = document.querySelectorAll('.danger-btn');
+            dangerBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.textContent;
+                    
+                    if (confirm(`Are you sure you want to ${action}? This action cannot be undone.`)) {
+                        alert(`${action} action completed.`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
